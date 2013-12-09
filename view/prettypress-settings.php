@@ -63,10 +63,10 @@ if ( ! defined('ABSPATH') ) { exit; } ?>
 	<h3 class="title">Found an issue?</h3>
 	<p>PrettyPress is still in early development, meaning you may encounter bugs.</p>
 	<p>If you've found a bug, consider sending us a pull request via Github to resolve the issue.</p>
-	<p><a href="https://www.github.com/emarketeer/PrettyPress" target="_blank" rel="nofollow">PrettyPress on Github</a></p>
+	<p><a href="https://www.github.com/evasivesoftware/PrettyPress" target="_blank" rel="nofollow">PrettyPress on Github</a></p>
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
-	<p><small>PrettyPress, a project by eMarketeer Australia.</small></p>
+	<p><small>PrettyPress, a project by EvasiveSoftware.com.</small></p>
 	
 </div>
