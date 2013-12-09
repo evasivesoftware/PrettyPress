@@ -5,7 +5,7 @@
 /*
 Plugin Name: PrettyPress
 Plugin URI: https://github.com/evasivesoftware/PrettyPress
-Description: Write posts in a new beautiful way, utilising a live preview window as you type.
+Description: A simple Wordpress publishing layout, focused on writing with a live preview of your future post.
 Version: 0.1
 Author: EvasiveSoftware.com
 Author URI: http://www.evasivesoftware.com/
