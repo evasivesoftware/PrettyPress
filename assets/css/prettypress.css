@@ -1,0 +1,129 @@
+/**
+ * @package PrettyPress
+ */
+/*
+The MIT License (MIT)
+
+Copyright (c) 2013 evasivesoftware.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
+.prettypress_warnings {
+	position: fixed;
+	top: 4em;
+	right: 4em;
+	width: 20%;
+	z-index: 9999;
+}
+
+.prettypress_warning_box {
+	cursor: pointer;
+	background: #111;
+	opacity: 0.75;
+	color: #fff;
+	padding: 1em;
+	-moz-border-radius: 1em;
+	-webkit-border-radius: 1em;
+	border-radius: 1em;
+	margin: 0 0 2em;
+}
+
+.prettypress_warning_box p {
+	margin: 0;
+}
+
+.edit-form-section-shrink {
+	float: left;
+	width: 29%;
+}
+
+.prettypress_wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	margin: 0;
+	z-index: 990;
+	display: none;
+	padding: 1.5em;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.prettypress_preview_container {
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 57%;
+	height: 100%;
+}
+
+.prettypress_active {
+	display: block;
+}
+
+.prettypress_iframe {
+	position: relative;
+	height: 500px;
+	width: 100%;
+}
+
+.prettypress_entry_field {
+	position: fixed !important;
+	z-index: 991;
+	left: 1.5em;
+	top: 8em;
+	width: 39%;
+}
+
+.prettypress_title {
+	top: 4em;
+	position: fixed;
+	left: 1.5em;
+	z-index: 991;
+	width: 39%;
+}
+
+.media-modal-content {
+	z-index: 999 !important;
+}
+
+#wpadminbar {
+	z-index: 989 !important;
+}
+
+.prettypress_resize {
+	top: 0;
+	left: 41.5%;
+	width: 1%;
+	height: 100%;
+	cursor: ew-resize;
+	position: fixed;
+}
+
+.border {
+	height: 100%;
+	width: 1px;
+	margin: 0 auto;
+	border-left: 1px dashed #aaa;
+}
