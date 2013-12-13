@@ -58,7 +58,9 @@ prettypress = new function() {
 			//Disable window.
 			jQuery("#prettypress_wrapper").fadeOut(500);
 			jQuery("#wp-content-wrap").removeClass("prettypress_entry_field");
+			jQuery("#wp-content-wrap").css("width", "auto");
 			jQuery("#titlewrap").removeClass("prettypress_title");
+			jQuery("#titlewrap").css("width", "auto");
 			this.status = 0;
 		}
 	}
@@ -70,7 +72,7 @@ prettypress = new function() {
 		padding = parseInt(padding) * 2;
 		var new_height = jQuery("#prettypress_wrapper").css("height").replace(/[A-Za-z$-]/g, "");
 		new_height = parseInt(new_height) - padding;
-		var editor_height = new_height - 190;
+		var editor_height = new_height - 230;
 		new_height = new_height + padding;
 		//Fix the preview window size.
 		jQuery("#prettypress_iframe").css("width", jQuery("#prettypress_preview_container").css("width"));

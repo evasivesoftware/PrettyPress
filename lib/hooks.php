@@ -63,9 +63,17 @@ function prettypress_edit_hook() {
 
 function prettypress_css_hook() {
 
+	global $prettypress_config;
+
 	//Register and queue the stylesheet.
 	wp_register_style( 'prettypress_css', PRETTYPRESS_BASE_URL . "/assets/css/prettypress.css", false );
 	wp_enqueue_style( 'prettypress_css' );
+
+	if ( $prettypress_config['legacy'] == "enabled" ) {
+		wp_register_style( 'prettypress_css_legacy', PRETTYPRESS_BASE_URL . "/assets/css/prettypress-legacy.css", false );
+		wp_enqueue_style( 'prettypress_css_legacy' );
+	}
+	
 	
 }
 

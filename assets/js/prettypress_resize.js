@@ -27,40 +27,96 @@ THE SOFTWARE.
 */
 
 jQuery(document).ready(function() {
+	
 	var resize_active = 0;
 	var resize_startx = 0;
 	var element_resize = jQuery("#resize");
 	var element_wp_content = jQuery("#wp-content-wrap");
-	var element_title = jQuery("#title");
+	var element_title = jQuery("#titlewrap");
 	var element_prettypress_container = jQuery("#prettypress_preview_container");
 	var element_prettypress_iframe = jQuery("#prettypress_iframe");
+	var element_prettypress_menu = jQuery("#prettypress_menu");
+
+	var element_overlay_left = jQuery("#prettypress_overlay_left");
+	var element_overlay_right = jQuery("#prettypress_overlay_right");
+	
 	jQuery(element_resize).mousedown(function(e) {
+
+
+		jQuery(".prettypress-hidden").fadeIn(50);
 		//Start following
 		resize_active = 1;
 		resize_startx = e.pageX;
 		return false;
+		
 	});
+
 	jQuery(window).mouseup(function() {
+		if ( prettypress.status === 1 ) {
+			prettypress_resize_up();
+		}
+	});
+	
+	jQuery(window).mousemove(function(e) {
+		if (resize_active === 1) {
+
+			var window_width = jQuery(window).width();
+
+			new_left = e.pageX;
+			new_right = window_width - new_left;
+
+			//Add 1% padding to fit the spacing bar.
+			var padding = ( window_width / 100 ) * 2;
+
+			new_left_overlay = new_left;
+			new_right_overlay = new_right;
+			
+			new_left = new_left - padding;
+			new_right = new_right - padding;
+			
+			if ( new_left > 461 && new_right > 240 ) {
+
+				jQuery(element_overlay_left).css("width", new_left_overlay + "px");
+				jQuery(element_overlay_right).css("width", new_right_overlay + "px");
+				
+			}
+		
+		}
+	});
+
+	function prettypress_resize_up() {
+		window_width = jQuery(window).width();
+		var padding = ( window_width / 100 ) * 2;
+		
+		jQuery(".prettypress-hidden").fadeOut(50);
 		//Stop following
 		resize_active = 0;
 		resize_startx = 0;
-	});
-	jQuery(window).mousemove(function(e) {
-		if (resize_active === 1) {
-			//Follow the mouse...
-			var difference = e.pageX - resize_startx;
-			jQuery(element_resize).css("left", e.pageX + "px");
-			var offset_left = jQuery(element_resize).offset().left;
-			offset_left = offset_left - 40;
-			var jQuerysecond = jQuery(element_resize);
-			var offset_right = (jQuery(window).width() - (jQuerysecond.offset().left + jQuerysecond.outerWidth()));
-			offset_right = offset_right - 30;
-			if (offset_left > 461 && offset_right > 240) {
-				jQuery(element_wp_content).css("width", offset_left + "px");
-				jQuery(element_title).css("width", offset_left + "px");
-				jQuery(element_prettypress_container).css("width", offset_right + "px");
-				jQuery(element_prettypress_iframe).css("width", offset_right + "px");
-			}
+		max_preview_width = window_width - 461 - (padding  * 2);
+		max_editor_width = window_width - 240 - (padding * 2);
+
+		if ( new_left < 461 ) {
+			new_left = 461;
 		}
-	});
+		if ( new_right < 240 ) {
+			new_right = 240;
+		}
+		if ( new_right > max_preview_width ) {
+			new_right = max_preview_width;
+		}
+		if ( new_left > max_editor_width ) {
+			new_left = max_editor_width;
+		}
+
+		var new_resize_left = new_left + padding;
+		var new_resize_menu = new_resize_left - 4;
+	
+		jQuery(element_wp_content).css("width", new_left + "px");
+		jQuery(element_title).css("width", new_left + "px");
+		jQuery(element_prettypress_menu).css("width", new_resize_menu + "px");
+		jQuery(element_prettypress_container).css("width", new_right + "px");
+		jQuery(element_prettypress_iframe).css("width", new_right + "px");
+		jQuery(element_resize).css("left", new_resize_left + "px");
+		
+	}
 });

@@ -1,6 +1,7 @@
 /**
  * @package PrettyPress
  */
+
 /*
 The MIT License (MIT)
 
@@ -24,38 +25,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
-jQuery(document).ready(function() {
-	//Register a couple of UX interactions.
-	jQuery("#prettypress_enable").click(function(e) {
-		//Enable prettypress.
-		e.preventDefault();
-		prettypress.resize();
-		prettypress.toggle();
-	});
-	jQuery("#prettypress_exit").click(function(e) {
-		//Enable prettypress.
-		e.preventDefault();
-		prettypress.resize();
-		prettypress.toggle();
-	});
-	jQuery(window).resize(function() {
-		//Resize the prettypress window.
-		prettypress.resize();
-	});
-	jQuery(".prettypress_warning_box").live('click', function(e) {
-		e.preventDefault();
-		jQuery(this).remove();
-	});
-	jQuery("#title").on('input', function() {
-		prettypress.updatepreviewcontent("title");
-	});
-});
 
-jQuery(window).load(function() {
-	tinymce.activeEditor.onKeyUp.add(function(activeEditor, l) {
-		prettypress.updatepreviewcontent("content");
-	});
-	tinymce.activeEditor.onChange.add(function(activeEditor, l) {
-		prettypress.updatepreviewcontent("content");
-	});
-});
+#prettypress_exit:before {
+	content: "←"!important;
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	font: normal 20px/1 'sans-serif'!important;
+	vertical-align: top;
+	cursor: pointer;
+}

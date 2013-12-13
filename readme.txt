@@ -3,8 +3,8 @@ Contributors: evasivesoftware
 Donate link: http://evasivesoftware.com/
 Tags: publishing, posting, live, preview, post interface, ghost
 Requires at least: 3.5
-Tested up to: 3.7.1
-Stable tag: 0.1
+Tested up to: 3.8
+Stable tag: 0.2
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 
@@ -54,9 +54,14 @@ We're working on that.
 
 == Changelog ==
 
+= 0.2 =
+* Added Wordpress 3.8 style support
+* Fixed live preview window resize speed
 
 == Upgrade Notice ==
 
+= 0.2 =
+This version fixed styling issues with Wordpress 3.8, as well as window resizing performance.
 
 == Arbitrary section ==
 

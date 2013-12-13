@@ -39,10 +39,16 @@ global $post;
 
 <div class="prettypress_warnings" id="prettypress_warnings"></div>
 
+<div class="prettypress-overlay-left prettypress-hidden" id="prettypress_overlay_left"></div>
+<div class="prettypress-overlay-right prettypress-hidden" id="prettypress_overlay_right"></div>
+
 <div class="prettypress_wrapper" id="prettypress_wrapper">
 	<div class="prettypress_resize" id="resize"><div class="border"></div></div>
 	
-	<a href="#" id="prettypress_exit">&#8592 Back to Wordpress</a>
+	<div class="prettypress_nav wp-ui-primary wp-ui-core wp-submenu" id="prettypress_menu">
+		<div class="item item-left" id="prettypress_exit"></div>
+		<div class="item-left">PrettyPress</div>
+	</div>
 	
 	<div class="prettypress_preview_container" id="prettypress_preview_container">
 		<iframe  id="prettypress_iframe" class="prettypress_iframe" src=""></iframe>

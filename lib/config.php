@@ -40,6 +40,12 @@ $prettypress_config['enabled'] = "enabled";
 //Check for settings from the settings page to override these defaults.
 $tmp_enabled = get_option( 'prettypress_enabled', null );
 
+if ( get_bloginfo('version') < 3.8 ) {
+	$prettypress_config['legacy'] = "enabled";
+} else {
+	$prettypress_config['legacy'] = "disabled";
+}
+
 if ( $tmp_enabled ) {
 	$prettypress_config['enabled'] = $tmp_enabled;
 }
