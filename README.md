@@ -13,7 +13,6 @@ This is an issue to be worked on in the near future.
 
 PrettyPress is still in very early development, and thus, there are known issues.
 
-*	The "drag and drop" resizing of the preview window is clunky.
 *	Wordpress themes that use the_title() in place of the_title_attribute() may break in the preview window.
 *	Shortcodes are currently not executed in live preview.
 *	PrettyPress is not very backwards browser compatible as of yet.
