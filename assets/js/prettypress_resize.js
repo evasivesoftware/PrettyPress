@@ -109,11 +109,10 @@ jQuery(document).ready(function() {
 		}
 
 		var new_resize_left = new_left + padding;
-		var new_resize_menu = new_resize_left - 4;
 	
 		jQuery(element_wp_content).css("width", new_left + "px");
 		jQuery(element_title).css("width", new_left + "px");
-		jQuery(element_prettypress_menu).css("width", new_resize_menu + "px");
+		jQuery(element_prettypress_menu).css("width", new_resize_left + "px");
 		jQuery(element_prettypress_container).css("width", new_right + "px");
 		jQuery(element_prettypress_iframe).css("width", new_right + "px");
 		jQuery(element_resize).css("left", new_resize_left + "px");

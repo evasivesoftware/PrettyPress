@@ -52,10 +52,10 @@ jQuery(document).ready(function() {
 });
 
 jQuery(window).load(function() {
-	tinymce.activeEditor.onKeyUp.add(function(activeEditor, l) {
-		prettypress.updatepreviewcontent("content");
-	});
-	tinymce.activeEditor.onChange.add(function(activeEditor, l) {
-		prettypress.updatepreviewcontent("content");
-	});
+
+	prettypress.bootuphooks();
+	prettypress.recursinghnd = window.setInterval( function() {
+		prettypress.recursivehooks();
+	}, 500);
+	
 });

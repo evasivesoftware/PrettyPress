@@ -47,7 +47,7 @@ global $post;
 	
 	<div class="prettypress_nav wp-ui-primary wp-ui-core wp-submenu" id="prettypress_menu">
 		<div class="item item-left" id="prettypress_exit"></div>
-		<div class="item-left">PrettyPress</div>
+		<div class="item-left">Back to Wordpress</div>
 	</div>
 	
 	<div class="prettypress_preview_container" id="prettypress_preview_container">

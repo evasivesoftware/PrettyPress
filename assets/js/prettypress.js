@@ -27,13 +27,17 @@ THE SOFTWARE.
 prettypress = new function() {
 	//Set the status.
 	this.status = 0;
+	this.hooked_tinymce = "no";
+	this.hooked_text = "no";
 	
 	this.toggle = function() {
+		
 		//Toggles the visibility of preview window.
 		if (this.status === 0) {
 			//Enable window.
 			//Make sure we have a URL to preview.
 			if (this.findpageurl() === 1) {
+				
 				jQuery("#wp-content-wrap").addClass("prettypress_entry_field");
 				jQuery("#titlewrap").addClass("prettypress_title");
 				jQuery("#prettypress_wrapper").fadeIn(500);
@@ -49,10 +53,13 @@ prettypress = new function() {
 				}
 				this.status = 1;
 				prettypress.resize();
+				
 			} else {
+				
 				//No url visible.
 				//Need to "save" draft?
 				this.error("Couldn't find any page to draw original theme from. You may need to press 'save' if you have just created this post.", 5000);
+				
 			}
 		} else {
 			//Disable window.
@@ -63,22 +70,30 @@ prettypress = new function() {
 			jQuery("#titlewrap").css("width", "auto");
 			this.status = 0;
 		}
+		
 	}
 	
 	this.resize = function() {
+		
 		//Resizes the PrettyPress preview window to fit parent container.
 		//Firefox causes issues with this in native CSS.
 		var padding = jQuery("#prettypress_wrapper").css("padding-top").replace(/[A-Za-z$-]/g, "");
 		padding = parseInt(padding) * 2;
+		
 		var new_height = jQuery("#prettypress_wrapper").css("height").replace(/[A-Za-z$-]/g, "");
 		new_height = parseInt(new_height) - padding;
+		
 		var editor_height = new_height - 230;
 		new_height = new_height + padding;
+		
 		//Fix the preview window size.
 		jQuery("#prettypress_iframe").css("width", jQuery("#prettypress_preview_container").css("width"));
 		jQuery("#prettypress_iframe").css("height", new_height + "px");
+		
 		//Fix the editor size.
 		jQuery("#content_ifr").css("height", editor_height + "px");
+		
+		
 	}
 	
 	this.findpageurl = function() {
@@ -149,8 +164,10 @@ prettypress = new function() {
 	}
 	
 	this.updatepreviewcontent = function(type) {
+		
 		var iframe = jQuery("#prettypress_iframe");
 		if (prettypress.status === 1) {
+			
 			//Only update for valid requests.
 			if (type === "title") {
 				var tmp_title = jQuery("#title").val();
@@ -161,13 +178,87 @@ prettypress = new function() {
 					this.current_content_title = tmp_title;
 				}
 			} else if (type === "content") {
-				var tmp_content = tinymce.activeEditor.getContent();
+				var tmp_content = this.getactivecontent();
 				if (tmp_content != this.current_content) {
 					//Update the content.
 					jQuery("[data-rel=content]", iframe.contents()).html(tmp_content);
 					this.current_content = tmp_content;
 				}
 			}
+			
 		}
+		
+	}
+
+	this.getactivecontent = function() {
+
+		//Find the active editor, and pull the value from it.
+		//Is the raw text editor visible?
+		
+		if ( jQuery("textarea#content").css("display") === "none" ) {
+			//TinyMCE is active.
+			return tinymce.activeEditor.getContent();
+		} else {
+			//Raw text editor is active.
+			return jQuery("textarea#content").val();
+		}
+		
+	}
+
+
+	this.hooktinymce = function() {
+
+		//Hook TinyMCE.
+		//Do not call this unless you have verified TinyMCE is active.
+
+		tinymce.activeEditor.onKeyUp.add(function(activeEditor, l) {
+			prettypress.updatepreviewcontent("content");
+		});
+	
+		tinymce.activeEditor.onChange.add(function(activeEditor, l) {
+			prettypress.updatepreviewcontent("content");
+		});
+		
+	}
+
+	this.bootuphooks = function() {
+
+		//Hook tinymce / textarea at startup.
+		//This lets the "live update" feature work.
+
+		if ( tinymce.activeEditor != null ) {
+			prettypress.hooktinymce();
+			prettypress.hooked_tinymce = "yes";
+		}
+		
+		//Hook textarea.
+		jQuery("textarea#content").keyup(function(){
+			prettypress.updatepreviewcontent("content");
+		});
+		prettypress.hooked_text = "yes";
+		
+	}
+
+	this.recursivehooks = function() {
+
+		//This function is called every half a second on the chance the bootup hooks had an error.
+		//This occurs when a user had tinymce disabled / inactive by default.
+		//This allows PP to hook TinyMCE once its active.
+		
+		if ( prettypress.hooked_tinymce === "yes" && prettypress.hooked_text === "yes" ) {
+			clearInterval(prettypress.recursinghnd);
+			return false;
+		} else {
+
+			if ( prettypress.hooked_tinymce === "no" ) {
+				//Attempt to hook tinymce.
+				if ( tinymce.activeEditor != null ) {
+					prettypress.hooktinymce();
+					prettypress.hooked_tinymce = "yes";
+				}
+			}
+			
+		}
+		
 	}
 }

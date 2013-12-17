@@ -4,7 +4,7 @@ Donate link: http://evasivesoftware.com/
 Tags: publishing, posting, live, preview, post interface, ghost
 Requires at least: 3.5
 Tested up to: 3.8
-Stable tag: 0.2
+Stable tag: 0.3
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 
@@ -51,8 +51,14 @@ We're working on that.
 == Screenshots ==
 
 1. The PrettyPress live preview layout.
+2. PrettyPress live preview is resizable.
 
 == Changelog ==
+
+= 0.3 =
+* Fixed raw text / html hooks and support
+* Live preview should now support raw text and html
+* Fixed bug where live preview would not execute if page was loaded without TinyMCE as default active editor
 
 = 0.2 =
 * Added Wordpress 3.8 style support
