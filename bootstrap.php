@@ -32,7 +32,7 @@ THE SOFTWARE.
 if ( ! defined('ABSPATH') ) { exit; }
 
 define( "PLUGINNAME",					"PrettyPress" );
-define( "PLUGINVERSION", 				"0.2" );
+define( "PLUGINVERSION", 				"0.3" );
 define( "PLUGINPATH",					dirname(__FILE__) );
 define( "PRETTYPRESS_BASE_URL",			plugins_url( "", __FILE__ ) );
 
