@@ -24,13 +24,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
+
 prettypress = new function() {
+	
 	//Set the status.
 	this.status = 0;
 	this.hooked_tinymce = "no";
 	this.hooked_text = "no";
 	
 	this.toggle = function() {
+		
+		//Check if the post has been saved before launching.
+		var requires_save = jQuery("[name=auto_draft]").val();
+		if ( requires_save === "1" ) {
+			//Save the post before publishing.
+			this.prelaunchsave();
+			return false;
+		}
 		
 		//Toggles the visibility of preview window.
 		if (this.status === 0) {
@@ -69,6 +79,29 @@ prettypress = new function() {
 			jQuery("#titlewrap").removeClass("prettypress_title");
 			jQuery("#titlewrap").css("width", "auto");
 			this.status = 0;
+		}
+		
+	}
+	
+	this.prelaunchsave = function() {
+		
+		//Before we launch PrettyPress, we need to save a post draft to have something to display.
+		//Ensure we have at least a title before doing this.
+		var tmp_title = this.getactivetitle();
+		if ( tmp_title ) {
+			
+			//There is a title. Perform the auto-save.
+			//But first, add a prettypress hidden post field.
+			jQuery("form#post").append('<input type="hidden" name="prettypress_active" value="1" />');
+			//Now, submit the form.
+			jQuery("#save-post").click();
+			return true;
+			
+		} else {
+			
+			this.error( "Sorry, you need to enter a post title before PrettyPress can provide a live preview.", 5000 );
+			return true;
+			
 		}
 		
 	}
@@ -136,8 +169,10 @@ prettypress = new function() {
 	};
 	
 	this.frameload = function() {
+		
 		//Search for the content.
 		var iframe = jQuery("#prettypress_iframe");
+		
 		//Look for attributes in the wrong location.
 		jQuery('[title]', iframe.contents()).each(function() {
 			var attrcontent = jQuery(this).attr("title");
@@ -145,21 +180,25 @@ prettypress = new function() {
 				jQuery(this).removeAttr("title");
 			}
 		});
+		
 		//Remove the admin bar.
 		jQuery('#wpadminbar', iframe.contents()).hide();
 		jQuery('html', iframe.contents()).css("margin-top", "0!important");
+		
 		var title = jQuery("[data-rel=title]", iframe.contents()).html();
 		if (title) {
 			this.current_content_title = title;
 		} else {
 			this.error("Couldn't find a title on preview page. You need to add data-rel='title' to the element holding it.", 5000);
 		}
+		
 		var content = jQuery("[data-rel=content]", iframe.contents()).html();
 		if (title) {
 			this.current_content = content;
 		} else {
 			this.error("Couldn't find the content on preview page. You need to add data-rel='content' to the element holding it.", 5000);
 		}
+		
 		this.updatepreviewcontent("content");
 	}
 	
@@ -170,7 +209,7 @@ prettypress = new function() {
 			
 			//Only update for valid requests.
 			if (type === "title") {
-				var tmp_title = jQuery("#title").val();
+				var tmp_title = this.getactivetitle();
 				if (tmp_title != this.current_content_title) {
 					//The title has changed.
 					//Fix the iframe field.
@@ -188,6 +227,11 @@ prettypress = new function() {
 			
 		}
 		
+	}
+	
+	this.getactivetitle = function() {
+		//Get the current title.
+		return jQuery("#title").val();
 	}
 
 	this.getactivecontent = function() {
@@ -225,10 +269,11 @@ prettypress = new function() {
 
 		//Hook tinymce / textarea at startup.
 		//This lets the "live update" feature work.
-
-		if ( tinymce.activeEditor != null ) {
-			prettypress.hooktinymce();
-			prettypress.hooked_tinymce = "yes";
+		if ( prettypress.tinymceexists() ) {
+			if ( tinymce.activeEditor != null ) {
+				prettypress.hooktinymce();
+				prettypress.hooked_tinymce = "yes";
+			}
 		}
 		
 		//Hook textarea.
@@ -244,21 +289,38 @@ prettypress = new function() {
 		//This function is called every half a second on the chance the bootup hooks had an error.
 		//This occurs when a user had tinymce disabled / inactive by default.
 		//This allows PP to hook TinyMCE once its active.
+		if ( prettypress.tinymceexists() ) {
+			
+			if ( prettypress.hooked_tinymce === "yes" && prettypress.hooked_text === "yes" ) {
+				clearInterval(prettypress.recursinghnd);
+				return false;
+			} else {
+
+				if ( prettypress.hooked_tinymce === "no" ) {
+					//Attempt to hook tinymce.
+					if ( tinymce.activeEditor != null ) {
+						prettypress.hooktinymce();
+						prettypress.hooked_tinymce = "yes";
+					}
+				}
+				
+			}
 		
-		if ( prettypress.hooked_tinymce === "yes" && prettypress.hooked_text === "yes" ) {
+		} else {
+			//No TinyMCE.
+			//Quit recursing to find it.
 			clearInterval(prettypress.recursinghnd);
 			return false;
-		} else {
-
-			if ( prettypress.hooked_tinymce === "no" ) {
-				//Attempt to hook tinymce.
-				if ( tinymce.activeEditor != null ) {
-					prettypress.hooktinymce();
-					prettypress.hooked_tinymce = "yes";
-				}
-			}
-			
 		}
 		
+	}
+	
+	this.tinymceexists = function() {
+		//Check for a TinyMCE session.
+		if ( typeof tinymce === 'undefined' ) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

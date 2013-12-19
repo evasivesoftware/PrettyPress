@@ -48,10 +48,41 @@ if ( $prettypress_config['enabled'] == "enabled" ) {
 	add_filter( 'the_content', 'prettypress_thecontent' );
 	add_filter( 'the_title', 'prettypress_thetitle' );
 	
+	//Autosave for posts that don't have a post ID yet.
+	add_filter('redirect_post_location', 'prettypress_autosave');
+	
 	
 } else {
 	//PrettyPress is disabled.
 	//Go outside and play!
+}
+
+
+ 
+function prettypress_autosave( $location ) {
+	
+	global $post;
+
+	//Make sure we are saving.
+	if (! empty($_POST['save']) ) {
+		
+		//Make sure it's a draft.
+		if ( $_POST['save'] == "Save Draft" ) {
+			
+			if (! empty($_POST['prettypress_active']) ) {
+				
+				//We know for sure that this post save was triggered by PrettyPress.
+				//We are safe to assume that a PrettyPress auto-launch has been triggered.
+				$location .= "&prettypress_active=1";
+				
+			}
+			
+		}
+		
+	}
+	
+	return $location;
+ 
 }
 
 function prettypress_edit_hook() {

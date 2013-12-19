@@ -25,6 +25,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 jQuery(document).ready(function() {
+	
 	//Register a couple of UX interactions.
 	jQuery("#prettypress_enable").click(function(e) {
 		//Enable prettypress.
@@ -49,6 +50,7 @@ jQuery(document).ready(function() {
 	jQuery("#title").on('input', function() {
 		prettypress.updatepreviewcontent("title");
 	});
+	
 });
 
 jQuery(window).load(function() {

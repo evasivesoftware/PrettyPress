@@ -1,7 +1,6 @@
 /**
  * @package PrettyPress
  */
-
 /*
 The MIT License (MIT)
 
@@ -26,11 +25,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-#prettypress_exit:before {
-	content: "←"!important;
-	display: inline-block;
-	-webkit-font-smoothing: antialiased;
-	font: normal 20px/1 'sans-serif'!important;
-	vertical-align: top;
-	cursor: pointer;
-}
+jQuery(document).ready(function(){
+	
+	//Check if we need to auto-load PrettyPress.
+	var autoload = jQuery("#prettypress_autoload").val();
+	if ( autoload ) {
+		//Load PrettyPress.
+		prettypress.toggle();
+	}
+	
+});

@@ -51,14 +51,19 @@ global $post;
 	</div>
 	
 	<div class="prettypress_preview_container" id="prettypress_preview_container">
-		<iframe  id="prettypress_iframe" class="prettypress_iframe" src=""></iframe>
+		<iframe id="prettypress_iframe" class="prettypress_iframe" src=""></iframe>
 	</div>
 </div>
 <div id="prettypress_meta">
 	<input type="hidden" id="prettypress_post_id" value="<?php echo $post->ID; ?>" />
 	<input type="hidden" id="prettypress_post_permalink" value="<?php echo get_permalink( $post->ID ); ?>" />
+	<?php
+	if (! empty( $_GET['prettypress_active'] ) ) { ?>
+	<input type="hidden" id="prettypress_autoload" value="1" />
+	<?php }	?>
 </div>
 
 <script src="<?php echo PRETTYPRESS_BASE_URL; ?>/assets/js/prettypress.js"></script>
 <script src="<?php echo PRETTYPRESS_BASE_URL; ?>/assets/js/prettypress_hooks.js"></script>
 <script src="<?php echo PRETTYPRESS_BASE_URL; ?>/assets/js/prettypress_resize.js"></script>
+<script src="<?php echo PRETTYPRESS_BASE_URL; ?>/assets/js/prettypress_bootloader.js"></script>

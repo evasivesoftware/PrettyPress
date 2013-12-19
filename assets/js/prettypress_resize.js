@@ -40,6 +40,8 @@ jQuery(document).ready(function() {
 	var element_overlay_left = jQuery("#prettypress_overlay_left");
 	var element_overlay_right = jQuery("#prettypress_overlay_right");
 	
+	var prettypress_resized = 0;
+	
 	jQuery(element_resize).mousedown(function(e) {
 
 
@@ -52,13 +54,15 @@ jQuery(document).ready(function() {
 	});
 
 	jQuery(window).mouseup(function() {
-		if ( prettypress.status === 1 ) {
+		if ( prettypress.status === 1 && prettypress_resized === 1 ) {
 			prettypress_resize_up();
 		}
 	});
 	
 	jQuery(window).mousemove(function(e) {
 		if (resize_active === 1) {
+			
+			prettypress_resized = 1;
 
 			var window_width = jQuery(window).width();
 
@@ -85,6 +89,7 @@ jQuery(document).ready(function() {
 	});
 
 	function prettypress_resize_up() {
+		
 		window_width = jQuery(window).width();
 		var padding = ( window_width / 100 ) * 2;
 		
@@ -94,19 +99,23 @@ jQuery(document).ready(function() {
 		resize_startx = 0;
 		max_preview_width = window_width - 461 - (padding  * 2);
 		max_editor_width = window_width - 240 - (padding * 2);
+		
 
 		if ( new_left < 461 ) {
 			new_left = 461;
 		}
+			
+		if ( new_left > max_editor_width ) {
+			new_left = max_editor_width;
+		}
+			
+		
 		if ( new_right < 240 ) {
 			new_right = 240;
 		}
 		if ( new_right > max_preview_width ) {
 			new_right = max_preview_width;
-		}
-		if ( new_left > max_editor_width ) {
-			new_left = max_editor_width;
-		}
+		}		
 
 		var new_resize_left = new_left + padding;
 	
