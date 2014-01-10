@@ -42,10 +42,13 @@ jQuery(document).ready(function() {
 	);
 	
 	//For legacy WP < 3.8
+	/*
+	 * Creates a double up
+	 * Fix this
 	jQuery("#wp-content-editor-tools").html( 
 		'<a id="content-markdown" class="wp-switch-editor switch-markdown">Markdown</a>'
 	 + jQuery("#wp-content-editor-tools").html() 
-	);
+	);*/
 	
 	jQuery("#content-markdown").hide();
 	
