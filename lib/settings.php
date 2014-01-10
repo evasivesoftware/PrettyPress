@@ -49,6 +49,7 @@ function prettypress_register_settings() {
 
 	//Register settings.
 	register_setting( 'prettypress-settings-group', 'prettypress_enabled' );
+	register_setting( 'prettypress-settings-group', 'prettypress_markdown' );
 
 }
 

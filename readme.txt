@@ -1,14 +1,16 @@
 === Plugin Name ===
 Contributors: evasivesoftware
 Donate link: http://evasivesoftware.com/
-Tags: publishing, posting, live, preview, post interface, ghost
+Tags: publishing, posting, live, preview, post interface, ghost, markdown
 Requires at least: 3.5
 Tested up to: 3.8
-Stable tag: 0.4
+Stable tag: 1.0.0
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 
+Version 1.0.x - Evasive Eel
 PrettyPress simplifies the default publishing layout, showing users a live front-end preview of their post, as they type.
+You're free to write in WYSIWYG, HTML or Markdown.
 
 == Description ==
 
@@ -22,6 +24,10 @@ It aims to be simple and encourage users to focus on writing - without other un-
 PrettyPress provides you with a live preview of how your post will look on the front end of the site, as you type.
 It uses some little javascript and jQuery hacks to do this - Bigger posts may be plagued by performance issues.
 This is an issue to be worked on in the near future.
+
+##Markdown composition
+
+PrettyPress allows users to compose in Markdown mode for speedy writing and excellent html conversion.
 
 == Installation ==
 
@@ -48,24 +54,23 @@ PrettyPress hooks will automatically be applied here.
 
 We're working on that.
 
-= I have to "save draft" on posts before they appear in PrettyPress =
-
-Update to version 0.4
-
-= PrettyPress doesn't work when the visual editor is disabled in user preferences =
-
-This has been fixed in version 0.4
-
 == Screenshots ==
 
 1. The PrettyPress live preview layout.
 2. PrettyPress live preview is resizable.
+3. PrettyPress in markdown mode
 
 == Changelog ==
 
+= 1.0.0 =
+* Markdown mode has been added and is considered in beta mode.
+* Fixed various hooks for custom post types
+* Added "publish" menu to PrettyPress screen - save and publish posts directly from PrettyPress
+* General bug fixes
+
 = 0.4 =
 * Fixed bug where live preview would not update if PrettyPress was executed before the post was saved.
-* Fixed bug where PrettyPress would not launch if the "visual editor" has been disabled in Wordpress user preferences.
+* Fixed bug where PrettyPress would not launch if TinyMCE has been disabled in Wordpress user options
 
 = 0.3 =
 * Fixed raw text / html hooks and support
@@ -78,31 +83,18 @@ This has been fixed in version 0.4
 
 == Upgrade Notice ==
 
-= 0.4 =
-* Fixed bug where live preview would not update if PrettyPress was executed before the post was saved.
-* Fixed bug where PrettyPress would not launch if the "visual editor" has been disabled in Wordpress user preferences.
-
-= 0.3 =
-* Fixed raw text / html hooks and support
-* Live preview should now support raw text and html
-* Fixed bug where live preview would not execute if page was loaded without TinyMCE as default active editor
+= 1.0.0 =
+Our latest shipment of PrettyPress now includes a markdown editor, publishing menu from inside PrettyPress, performance enhancements and bug fixes.
 
 = 0.2 =
 This version fixed styling issues with Wordpress 3.8, as well as window resizing performance.
 
 == Arbitrary section ==
 
-= Coming soon =
+Other libraries used in this project.
 
-The future of PrettyPress is looking great. Version 0.x will be seeing further bug fixes and general support.
+Marked.js - Copyright (c) 2011-2013, Christopher Jeffrey. (MIT License)
+https://github.com/chjj/marked
 
-Once we're ready, version 1.x is planned to have new features, including:
-* Change-able PrettyPress preview layouts
-* Further refinements of the interface
-* Ability to save, publish and update posts from PrettyPress
-* Custom field drop-downs that update in real time
-* Live post type updates
-* Live page layout updates
-* Live shortcode generation
-
-Have another idea? Pitch it to us! info [at] evasivesoftware dot [com]
+to-markdown is copyright © 2011 Dom Christie and released under the MIT license.
+https://github.com/domchristie/to-markdown

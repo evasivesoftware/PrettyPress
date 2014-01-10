@@ -34,6 +34,7 @@ if ( ! defined('ABSPATH') ) { exit; } ?>
 <div class="wrap">
 	<div id="icon-options-general" class="icon32"><br /><br /></div>
 	<h2><?php echo PLUGINNAME; ?> settings</h2>
+	<p><small>PrettyPress version <?php echo PLUGINVERSION; ?>, <?php echo PLUGINCODENAME; ?>.</small></p>
 
 	<form method="post" action="options.php">
 		<?php settings_fields( 'prettypress-settings-group' ); ?>
@@ -53,6 +54,19 @@ if ( ! defined('ABSPATH') ) { exit; } ?>
 					<p class="description">The standard Wordpress composition screen remains available when PrettyPress is enabled. You should only need to disable PrettyPress if your theme experiences serious incompatibility issues.</p>
 				</td>
 			</tr>
+			<tr valign="top">
+				<th scope="row">Enable the PrettyPress markdown editor?</th>
+				<td>
+					<?php
+						$enabled = get_option('prettypress_markdown');
+					?>
+					<select name="prettypress_markdown">
+						<option value="enabled"<?php if ( $enabled == "enabled" ) { ?> selected="selected"<?php } ?>>Enabled</option>
+						<option value="disabled"<?php if ( $enabled == "disabled" ) { ?> selected="selected"<?php } ?>>Disabled</option>
+					</select>
+					<p class="description">If you experience issues with the markdown editor, you can disable it here.</p>
+				</td>
+			</tr>
 		</table>
 		
 		<?php submit_button(); ?>
@@ -60,13 +74,9 @@ if ( ! defined('ABSPATH') ) { exit; } ?>
 	</form>
 
 
-	<h3 class="title">Found an issue?</h3>
-	<p>PrettyPress is still in early development, meaning you may encounter bugs.</p>
-	<p>If you've found a bug, consider sending us a pull request via Github to resolve the issue.</p>
-	<p><a href="https://www.github.com/evasivesoftware/PrettyPress" target="_blank" rel="nofollow">PrettyPress on Github</a></p>
-	<p>&nbsp;</p>
-	<p>&nbsp;</p>
-	<p>&nbsp;</p>
-	<p><small>PrettyPress, a project by EvasiveSoftware.com.</small></p>
+	<h3 class="title">Thanks for using PrettyPress.</h3>
+	<p>You're awesome!</p>
+	<p>Written by <a href="http://www.twitter.com/richard_ddenton" target="_blank" rel="nofollow">@richard_ddenton</a> and others.</p>
+	<p><small>PrettyPress, a project by EvasiveSoftware.com and eMarketeer Australia.</small></p>
 	
 </div>

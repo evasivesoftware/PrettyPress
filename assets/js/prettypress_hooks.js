@@ -24,6 +24,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
+
 jQuery(document).ready(function() {
 	
 	//Register a couple of UX interactions.
@@ -33,22 +34,42 @@ jQuery(document).ready(function() {
 		prettypress.resize();
 		prettypress.toggle();
 	});
+	
 	jQuery("#prettypress_exit").click(function(e) {
 		//Enable prettypress.
 		e.preventDefault();
 		prettypress.resize();
 		prettypress.toggle();
 	});
+	
 	jQuery(window).resize(function() {
 		//Resize the prettypress window.
 		prettypress.resize();
 	});
+	
 	jQuery(".prettypress_warning_box").live('click', function(e) {
 		e.preventDefault();
 		jQuery(this).remove();
 	});
+	
 	jQuery("#title").on('input', function() {
 		prettypress.updatepreviewcontent("title");
+	});
+	
+	//Publish menu.
+	jQuery("#prettypress_publish").click(function(e){
+		e.preventDefault();
+		prettypress.publishmenutoggle();
+	});
+	
+	//Publish menu save button.
+	jQuery("#pp-btn-save").click(function(e){
+		prettypress.prelaunchsave();
+	});
+	
+	//Publish menu publish button.
+	jQuery("#pp-btn-publish").click(function(e){
+		jQuery("#publish").click();
 	});
 	
 });

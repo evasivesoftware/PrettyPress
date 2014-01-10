@@ -31,6 +31,8 @@ prettypress = new function() {
 	this.status = 0;
 	this.hooked_tinymce = "no";
 	this.hooked_text = "no";
+	this.markdown_active = "no";
+	this.publish_menu_active = "no";
 	
 	this.toggle = function() {
 		
@@ -48,6 +50,7 @@ prettypress = new function() {
 			//Make sure we have a URL to preview.
 			if (this.findpageurl() === 1) {
 				
+				jQuery("#content-markdown").show();
 				jQuery("#wp-content-wrap").addClass("prettypress_entry_field");
 				jQuery("#titlewrap").addClass("prettypress_title");
 				jQuery("#prettypress_wrapper").fadeIn(500);
@@ -73,11 +76,18 @@ prettypress = new function() {
 			}
 		} else {
 			//Disable window.
+			jQuery("#content-markdown").hide();
 			jQuery("#prettypress_wrapper").fadeOut(500);
 			jQuery("#wp-content-wrap").removeClass("prettypress_entry_field");
 			jQuery("#wp-content-wrap").css("width", "auto");
 			jQuery("#titlewrap").removeClass("prettypress_title");
 			jQuery("#titlewrap").css("width", "auto");
+			
+			if ( prettypress.markdown_active === "yes" ) {
+				//Hide the markdown window.
+				prettypress.togglemarkdown();
+			}
+			
 			this.status = 0;
 		}
 		
@@ -239,7 +249,12 @@ prettypress = new function() {
 		//Find the active editor, and pull the value from it.
 		//Is the raw text editor visible?
 		
-		if ( jQuery("textarea#content").css("display") === "none" ) {
+		if ( prettypress.markdown_active === "yes" ) {
+			//Grab Markdown RAW, convert it.
+			var rawmd = prettypress.getmarkdownvalue();
+			return marked( rawmd );
+			
+		} else if ( jQuery("textarea#content").css("display") === "none" ) {
 			//TinyMCE is active.
 			return tinymce.activeEditor.getContent();
 		} else {
@@ -282,6 +297,11 @@ prettypress = new function() {
 		});
 		prettypress.hooked_text = "yes";
 		
+		//Hook markdown.
+		jQuery("textarea#prettypress_markdown").keyup(function(){
+			prettypress.updatepreviewcontent("content");
+		});
+		
 	}
 
 	this.recursivehooks = function() {
@@ -321,6 +341,77 @@ prettypress = new function() {
 			return false;
 		} else {
 			return true;
+		}
+	}
+	
+	this.togglemarkdown = function() {
+		
+		//Toggle the Markdown editor.
+		if ( prettypress.markdown_active === "yes" ) {
+			//Turn off Markdown.
+			
+			//Grab the markdown value.
+			var rawhtml = prettypress.getactivecontent();
+			
+			if ( prettypress.tinymceexists() ) {
+				if ( tinymce.activeEditor != null ) {
+					tinymce.activeEditor.setContent( rawhtml );
+				}
+			}
+			
+			jQuery("textarea#content").val( rawhtml );
+			
+			jQuery("#prettypress_markdown_editor_wrapper").hide();
+			
+			//Show wordpress code elements.
+			jQuery("#wp-content-editor-container").show();
+			jQuery("#content-resize-handle").show();
+			jQuery("#insert-media-button").show();
+			
+			prettypress.markdown_active = "no";
+			
+		}  else {
+			//Turn on Markdown.
+			
+			//Grab the existing content.
+			var rawhtml = prettypress.getactivecontent();
+			
+			//Convert the raw HTML to Markdown.
+			var rawmd = toMarkdown( rawhtml );
+			
+			//Set it to the Markdown content.
+			jQuery("#prettypress_markdown").val( rawmd );
+			
+			//Hide wordpress core elements.
+			jQuery("#wp-content-editor-container").hide();
+			jQuery("#content-resize-handle").hide();
+			jQuery("#insert-media-button").hide();
+
+			
+			//Show prettypress markdown editor
+			jQuery("#prettypress_markdown_editor_wrapper").show();
+			prettypress.markdown_active = "yes";
+			
+		}
+		
+	}
+	
+	this.getmarkdownvalue = function() {
+		
+		if ( prettypress.markdown_active === "yes" ) {
+			return jQuery("#prettypress_markdown").val();
+		}
+		
+	}
+	
+	this.publishmenutoggle = function() {
+		
+		if ( prettypress.publish_menu_active === "no" ) {
+			jQuery("#prettypress_publish_menu").show();
+			prettypress.publish_menu_active = "yes";
+		} else {
+			jQuery("#prettypress_publish_menu").hide();
+			prettypress.publish_menu_active = "no";
 		}
 	}
 }

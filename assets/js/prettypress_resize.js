@@ -33,6 +33,7 @@ jQuery(document).ready(function() {
 	var element_resize = jQuery("#resize");
 	var element_wp_content = jQuery("#wp-content-wrap");
 	var element_title = jQuery("#titlewrap");
+	var element_markdown_container = jQuery("#prettypress_markdown_editor_wrapper");
 	var element_prettypress_container = jQuery("#prettypress_preview_container");
 	var element_prettypress_iframe = jQuery("#prettypress_iframe");
 	var element_prettypress_menu = jQuery("#prettypress_menu");
@@ -121,6 +122,7 @@ jQuery(document).ready(function() {
 	
 		jQuery(element_wp_content).css("width", new_left + "px");
 		jQuery(element_title).css("width", new_left + "px");
+		jQuery(element_markdown_container).css("width", new_left + "px");
 		jQuery(element_prettypress_menu).css("width", new_resize_left + "px");
 		jQuery(element_prettypress_container).css("width", new_right + "px");
 		jQuery(element_prettypress_iframe).css("width", new_right + "px");
