@@ -97,7 +97,7 @@ function prettypress_css_hook() {
 	global $prettypress_config;
 
 	//Register and queue the stylesheet.
-	wp_register_style( 'prettypress_css', PRETTYPRESS_BASE_URL . "/assets/css/prettypress.css", false );
+	wp_register_style( 'prettypress_css', PRETTYPRESS_BASE_URL . "/assets/css/prettypress.css?v=" . PLUGINVERSION, false );
 	wp_enqueue_style( 'prettypress_css' );
 		
 }
