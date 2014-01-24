@@ -3,8 +3,8 @@ Contributors: evasivesoftware
 Donate link: http://evasivesoftware.com/
 Tags: publishing, posting, live, preview, post interface, ghost, markdown
 Requires at least: 3.5
-Tested up to: 3.8
-Stable tag: 1.0.3
+Tested up to: 3.8.1
+Stable tag: 1.0.4
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 
