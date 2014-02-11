@@ -4,7 +4,7 @@
 /*
 The MIT License (MIT)
 
-Copyright (c) 2013 evasivesoftware.com
+Copyright (c) 2014 evasivesoftware.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -233,15 +233,25 @@ textarea.prettypress_markdown_editor {
 
 .pp-menu {
 	position: absolute;
-	background: #fff;
+	background: #252525;
 	margin-left: -24px;
-	margin-top: 24px;
+	margin-top: 40px;
 	color: #333;
 	z-index: 999999999999999999999999999!important;
 	padding: 1em 1em 0.25em 1em;
 	display: none;
-	border: 1px solid #ccc;
 	line-height: 3em;
+}
+
+.pp-menu:before {
+  width: 0;
+  height: 0;
+  border-bottom: 12px solid #252525;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  display: table;
+  content: "";
+  margin: -25px 0 15px -1em;
 }
 
 .pp-menu a {

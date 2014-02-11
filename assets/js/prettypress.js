@@ -4,7 +4,7 @@
 /*
 The MIT License (MIT)
 
-Copyright (c) 2013 evasivesoftware.com
+Copyright (c) 2014 evasivesoftware.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -103,6 +103,14 @@ prettypress = new function() {
 			//There is a title. Perform the auto-save.
 			//But first, add a prettypress hidden post field.
 			jQuery("form#post").append('<input type="hidden" name="prettypress_active" value="1" />');
+			
+			//Get the current post data and set it to TinyMCE to ensure a clean save.
+			var rawhtml = this.getactivecontent();
+			
+			if ( tinymce.activeEditor != null ) {
+				tinymce.activeEditor.setContent( rawhtml );
+			}
+			
 			//Now, submit the form.
 			jQuery("#save-post").click();
 			return true;

@@ -6,7 +6,7 @@
 Plugin Name: PrettyPress
 Plugin URI: https://github.com/evasivesoftware/PrettyPress
 Description: A simple Wordpress publishing layout, focused on writing with a live preview of your future post.
-Version: 1.0.4
+Version: 1.0.5
 Author: EvasiveSoftware.com
 Author URI: http://www.evasivesoftware.com/
 License: MIT
@@ -15,7 +15,7 @@ License: MIT
 /*
 The MIT License (MIT)
 
-Copyright (c) 2013 evasivesoftware.com
+Copyright (c) 2014 evasivesoftware.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

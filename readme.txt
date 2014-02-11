@@ -4,7 +4,7 @@ Donate link: http://evasivesoftware.com/
 Tags: publishing, posting, live, preview, post interface, ghost, markdown
 Requires at least: 3.5
 Tested up to: 3.8.1
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 
@@ -61,6 +61,9 @@ We're working on that.
 3. PrettyPress in markdown mode
 
 == Changelog ==
+
+= 1.0.5 =
+* Fixed bug where pressing "save" from PrettyPress screen on markdown tab would lose post.
 
 = 1.0.0 =
 * Markdown mode has been added and is considered in beta mode.
