@@ -35,8 +35,8 @@ if ( $prettypress_config['enabled'] == "enabled" ) {
 	//Register our hooks.
 	
 	//The CSS.
-	add_action( 'admin_enqueue_scripts', 'prettypress_css_hook' );
-	
+	add_action( 'admin_enqueue_scripts', 'prettypress_css_js_hook' );
+
 	//The meta box
 	add_action( 'add_meta_boxes', 'prettypress_meta_box' );
 	
@@ -92,13 +92,37 @@ function prettypress_edit_hook() {
 	
 }
 
-function prettypress_css_hook() {
+function prettypress_css_js_hook() {
 
 	global $prettypress_config;
 
 	//Register and queue the stylesheet.
 	wp_register_style( 'prettypress_css', PRETTYPRESS_BASE_URL . "/assets/css/prettypress.css?v=" . PLUGINVERSION, false );
 	wp_enqueue_style( 'prettypress_css' );
+	
+	//Register the javascript required.
+	
+	//Markdown related.
+	wp_register_script( 'prettypress_js_to-markdown', PRETTYPRESS_BASE_URL . "/assets/js/third-party/to-markdown.js?v=" . PLUGINVERSION, false );
+	wp_register_script( 'prettypress_js_marked', PRETTYPRESS_BASE_URL . "/assets/js/third-party/marked.js?v=" . PLUGINVERSION, false );
+	wp_register_script( 'prettypress_js_markdown', PRETTYPRESS_BASE_URL . "/assets/js/prettypress_markdown.js?v=" . PLUGINVERSION, false );
+	
+	//Generic hooks.
+	wp_register_script( 'prettypress_js_prettypress', PRETTYPRESS_BASE_URL . "/assets/js/prettypress.js?v=" . PLUGINVERSION, false );
+	wp_register_script( 'prettypress_js_hooks', PRETTYPRESS_BASE_URL . "/assets/js/prettypress_hooks.js?v=" . PLUGINVERSION, false );
+	wp_register_script( 'prettypress_js_resize', PRETTYPRESS_BASE_URL . "/assets/js/prettypress_resize.js?v=" . PLUGINVERSION, false );
+	wp_register_script( 'prettypress_js_bootloader', PRETTYPRESS_BASE_URL . "/assets/js/prettypress_bootloader.js?v=" . PLUGINVERSION, false );
+	
+	if ( $prettypress_config['markdown'] == "enabled" ) {
+		wp_enqueue_script( 'prettypress_js_to-markdown' );
+		wp_enqueue_script( 'prettypress_js_marked' );
+		wp_enqueue_script( 'prettypress_js_markdown' );
+	}
+	
+	wp_enqueue_script( 'prettypress_js_prettypress' );
+	wp_enqueue_script( 'prettypress_js_hooks' );
+	wp_enqueue_script( 'prettypress_js_resize' );
+	wp_enqueue_script( 'prettypress_js_bootloader' );
 		
 }
 

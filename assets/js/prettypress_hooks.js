@@ -69,7 +69,7 @@ jQuery(document).ready(function() {
 	
 	//Publish menu publish button.
 	jQuery("#pp-btn-publish").click(function(e){
-		jQuery("#publish").click();
+		prettypress.publish();
 	});
 	
 });

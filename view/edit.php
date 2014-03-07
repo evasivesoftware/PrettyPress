@@ -89,14 +89,3 @@ global $post, $prettypress_config;
 	<?php }	?>
 </div>
 
-<?php if ( $prettypress_config['markdown'] == "enabled" ) { ?>
-<script src="<?php echo PRETTYPRESS_BASE_URL; ?>/assets/js/third-party/to-markdown.js"></script>
-<script src="<?php echo PRETTYPRESS_BASE_URL; ?>/assets/js/third-party/marked.js"></script>
-<?php } ?>
-<script src="<?php echo PRETTYPRESS_BASE_URL; ?>/assets/js/prettypress.js"></script>
-<script src="<?php echo PRETTYPRESS_BASE_URL; ?>/assets/js/prettypress_hooks.js"></script>
-<?php if ( $prettypress_config['markdown'] == "enabled" ) { ?>
-<script src="<?php echo PRETTYPRESS_BASE_URL; ?>/assets/js/prettypress_markdown.js"></script>	
-<?php } ?>
-<script src="<?php echo PRETTYPRESS_BASE_URL; ?>/assets/js/prettypress_resize.js"></script>
-<script src="<?php echo PRETTYPRESS_BASE_URL; ?>/assets/js/prettypress_bootloader.js"></script>
