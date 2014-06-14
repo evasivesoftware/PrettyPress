@@ -32,7 +32,7 @@ THE SOFTWARE.
 if ( ! defined('ABSPATH') ) { exit; }
 
 define( "PLUGINNAME",					"PrettyPress" );
-define( "PLUGINVERSION", 				"1.0.6" );
+define( "PLUGINVERSION", 				"1.0.9" );
 define( "PLUGINCODENAME", 				"Evasive Eel" );
 define( "PLUGINPATH",					dirname(__FILE__) );
 define( "PRETTYPRESS_BASE_URL",			plugins_url( "", __FILE__ ) );

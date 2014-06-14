@@ -82,7 +82,12 @@ global $post, $prettypress_config;
 <!-- PrettyPress meta -->
 <div id="prettypress_meta">
 	<input type="hidden" id="prettypress_post_id" value="<?php echo $post->ID; ?>" />
-	<input type="hidden" id="prettypress_post_permalink" value="<?php echo get_permalink( $post->ID ); ?>" />
+	<?php
+		//Thanks to BennyLi, http://wordpress.org/support/topic/https-again
+		preg_match("/(http[s]?).*/", site_url(), $schemeToUse);
+		$permalink = preg_replace( "/(http[s]?)/", $schemeToUse[1], get_permalink( $post->ID ) );
+	?>
+	<input type="hidden" id="prettypress_post_permalink" value="<?php echo $permalink; ?>" />
 	<?php
 	if (! empty( $_GET['prettypress_active'] ) ) { ?>
 	<input type="hidden" id="prettypress_autoload" value="1" />

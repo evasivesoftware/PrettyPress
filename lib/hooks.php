@@ -105,13 +105,13 @@ function prettypress_css_js_hook() {
 	//Markdown related.
 	wp_register_script( 'prettypress_js_to-markdown', PRETTYPRESS_BASE_URL . "/assets/js/third-party/to-markdown.js?v=" . PLUGINVERSION, false );
 	wp_register_script( 'prettypress_js_marked', PRETTYPRESS_BASE_URL . "/assets/js/third-party/marked.js?v=" . PLUGINVERSION, false );
-	wp_register_script( 'prettypress_js_markdown', PRETTYPRESS_BASE_URL . "/assets/js/prettypress_markdown.js?v=" . PLUGINVERSION, false );
+	wp_register_script( 'prettypress_js_markdown', PRETTYPRESS_BASE_URL . "/assets/js/build/prettypress_markdown.min.js?v=" . PLUGINVERSION, false );
 	
 	//Generic hooks.
-	wp_register_script( 'prettypress_js_prettypress', PRETTYPRESS_BASE_URL . "/assets/js/prettypress.js?v=" . PLUGINVERSION, false );
-	wp_register_script( 'prettypress_js_hooks', PRETTYPRESS_BASE_URL . "/assets/js/prettypress_hooks.js?v=" . PLUGINVERSION, false );
-	wp_register_script( 'prettypress_js_resize', PRETTYPRESS_BASE_URL . "/assets/js/prettypress_resize.js?v=" . PLUGINVERSION, false );
-	wp_register_script( 'prettypress_js_bootloader', PRETTYPRESS_BASE_URL . "/assets/js/prettypress_bootloader.js?v=" . PLUGINVERSION, false );
+	wp_register_script( 'prettypress_js_prettypress', PRETTYPRESS_BASE_URL . "/assets/js/build/prettypress.min.js?v=" . PLUGINVERSION, false );
+	wp_register_script( 'prettypress_js_hooks', PRETTYPRESS_BASE_URL . "/assets/js/build/prettypress_hooks.min.js?v=" . PLUGINVERSION, false );
+	wp_register_script( 'prettypress_js_resize', PRETTYPRESS_BASE_URL . "/assets/js/build/prettypress_resize.min.js?v=" . PLUGINVERSION, false );
+	wp_register_script( 'prettypress_js_bootloader', PRETTYPRESS_BASE_URL . "/assets/js/build/prettypress_bootloader.min.js?v=" . PLUGINVERSION, false );
 	
 	if ( $prettypress_config['markdown'] == "enabled" ) {
 		wp_enqueue_script( 'prettypress_js_to-markdown' );

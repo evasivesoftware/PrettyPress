@@ -30,7 +30,7 @@ THE SOFTWARE.
 	top: 4em;
 	right: 4em;
 	width: 20%;
-	z-index: 9999;
+	z-index: 99999;
 }
 
 .prettypress_warning_box {
@@ -62,7 +62,7 @@ THE SOFTWARE.
 	height: 100%;
 	background: #fff;
 	margin: 0;
-	z-index: 990;
+	z-index: 99990;
 	display: none;
 	padding: 0em;
 	-webkit-box-sizing: border-box;
@@ -91,7 +91,7 @@ THE SOFTWARE.
 
 .prettypress_entry_field {
 	position: fixed !important;
-	z-index: 991;
+	z-index: 99991;
 	left: 1.5em;
 	top: 8em;
 	width: 39%;
@@ -101,16 +101,16 @@ THE SOFTWARE.
 	top: 4em;
 	position: fixed;
 	left: 1.5em;
-	z-index: 991;
+	z-index: 99991;
 	width: 39%;
 }
 
 .media-modal-content {
-	z-index: 999 !important;
+	z-index: 99999 !important;
 }
 
 #wpadminbar {
-	z-index: 989 !important;
+	z-index: 99989 !important;
 }
 
 .prettypress_resize {
@@ -134,7 +134,7 @@ THE SOFTWARE.
 }
 
 .prettypress-overlay-left {
-	z-index: 995;
+	z-index: 99995;
 	position: fixed;
 	width: 41%;
 	height: 100%;
@@ -149,7 +149,7 @@ THE SOFTWARE.
 }
 
 .prettypress-overlay-right {
-	z-index: 995;
+	z-index: 99995;
 	position: fixed;
 	width: 59%;
 	height: 100%;
@@ -194,7 +194,7 @@ THE SOFTWARE.
 
 .prettypress_markdown_editor_wrapper {
 	position: fixed !important;
-	z-index: 994;
+	z-index: 99994;
 	left: 1.5em;
 	top: 10.6em;
 	width: 39%;
@@ -227,7 +227,7 @@ textarea.prettypress_markdown_editor {
 	margin-left: -25px;
 	margin-right: -25px;
 	background: url("../img/loading.gif") center center no-repeat #333;
-	z-index: 9999999999999999;
+	z-index: 99999999999999999;
 	display: none;
 }
 
@@ -237,7 +237,7 @@ textarea.prettypress_markdown_editor {
 	margin-left: -24px;
 	margin-top: 40px;
 	color: #333;
-	z-index: 999999999999999999999999999!important;
+	z-index: 9999999999999999999999999999!important;
 	padding: 1em 1em 0.25em 1em;
 	display: none;
 	line-height: 3em;
