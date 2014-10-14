@@ -201,13 +201,13 @@ function prettypress_thetitle( $title ) {
 	if ( is_user_logged_in() && $id ) {
 		if ( is_admin() ) {
 			global $pagenow;
-			if ( $pagenow != 'edit.php' && $pagenow != "upload.php" ) {
-				return '<span data-rel="title">' . $title . '</span>';
+			if ( $pagenow != 'edit.php' && $pagenow != "upload.php" && $pagenow != "admin-ajax.php" ) {
+				return '<span data-rel=title>' . $title . '</span>';
 			} else {
 				return $title;
 			}
 		} else {
-			return '<span data-rel="title">' . $title . '</span>';
+			return '<span data-rel=title>' . $title . '</span>';
 		}
 	} else {
 		return $title;
