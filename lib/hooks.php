@@ -97,7 +97,7 @@ function prettypress_css_js_hook( $page ) {
 	global $prettypress_config;
 
 	//Only hook if required.
-	if ( $page == "post.php" ) {
+	if ( $page == "post.php" || $page == "post-new.php" ) {
 
 		//Register and queue the stylesheet.
 		wp_register_style( 'prettypress_css', PRETTYPRESS_BASE_URL . "/assets/css/prettypress.css?v=" . PLUGINVERSION, false );
