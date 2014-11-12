@@ -31,11 +31,13 @@ THE SOFTWARE.
 //Defend our stuff!
 if ( ! defined('ABSPATH') ) { exit; }
 
-define( "PLUGINNAME",					"PrettyPress" );
-define( "PLUGINVERSION", 				"1.0.9" );
-define( "PLUGINCODENAME", 				"Evasive Eel" );
-define( "PLUGINPATH",					dirname(__FILE__) );
-define( "PRETTYPRESS_BASE_URL",			plugins_url( "", __FILE__ ) );
+define( "PLUGINNAME",									"PrettyPress" );
+define( "PLUGINVERSION", 							"1.1.1" );
+define( "PLUGINCODENAME", 						"Ferocious Feline" );
+define( "PLUGINPATH",									dirname(__FILE__) );
+define( "PRETTYPRESS_BASE_URL",				plugins_url( "", __FILE__ ) );
+define( "PRETTYPRESSPRO_SALES_URL",		"http://pro.evasivesoftware.com" );
+define( "PRETTYPRESSPRO_VERSION_URL",	"http://pp.evasivesoftware.com/version.txt" );
 
 //Load our requirements.
 require_once 'lib/config.php';

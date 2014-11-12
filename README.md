@@ -1,25 +1,27 @@
-#PrettyPress - Making Wordpress composition simple and beautiful.
+=PrettyPress - Real-time WordPress publishing and previews in markdown.=
 
-PrettyPress is an MIT licensed Wordpress plugin that focuses on simplifying the default Wordpress publishing layout.
-It aims to be simple and encourage users to focus on writing - without other un-necessary distractions.
+For up to date information, see [https://wordpress.org/plugins/prettypress/](https://wordpress.org/plugins/prettypress/).
 
-##Live preview window as you type
+PrettyPress is a WordPress plugin that simplifies and smartens the way you write online.
+It rids distractions and bloated features, to give you exactly what you need to write posts quickly:
 
-PrettyPress provides you with a live preview of how your post will look on the front end of the site, as you type.
-It uses some little javascript and jQuery hacks to do this - Bigger posts may be plagued by performance issues.
-This is an issue to be worked on in the near future.
 
-###Known issues
+* A markdown editor and parser
+* A real-time live preview of your post
+* A distraction free environment
 
-PrettyPress is still in very early development, and thus, there are known issues.
+[PrettyPress Pro][http://pro.evasivesoftware.com] users also have shortcodes executed and previewed in real-time.
 
-*	Wordpress themes that use the_title() in place of the_title_attribute() may break in the preview window.
-*	Shortcodes are currently not executed in live preview.
-*	PrettyPress is not very backwards browser compatible as of yet.
+===Live preview window, as you type===
+PrettyPress provides you with a live "front-end" preview of the post you are writing. This means you can write your post remaining confident it will look as intended by the end.
 
-###How can I help?
+===Write in markdown===
+PrettyPress ships out of the box as a markdown editor. All markdown is converted on the fly, giving you instant previews of your post, as you type.
 
-The usual "social coding" routine applies. Send a pull request for consideration!
+==FAQ==
 
-###Your plugin sucks, how can I flame you about it?
-Email us on info [at] checkthedomaininthepluginlicense [dot] com
+===PrettyPress breaks the front end preview of my site, what should I do?===
+Check that your theme is correctly using the_title_attribute for title="" attributes. If your theme is incorrectly using the_title(), PrettyPress hooks will automatically be applied here, thus breaking your theme.
+
+===My shortcodes don't execute in the preview window===
+Live shortcode previews are only available to [PrettyPress Pro][http://pro.evasivesoftware.com] users.

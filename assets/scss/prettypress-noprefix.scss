@@ -1,0 +1,358 @@
+.hide-body-overflow {
+	overflow-y: hidden;
+}
+
+.prettypress {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #eee;
+	z-index: 9999999;
+	display: none;
+
+	.prettypress_header_menu {
+		position: fixed;
+		z-index: 9999999;
+		width: 50%;
+		height: 50px;
+		padding: 10px 20px;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+	.prettypress_exit {
+		float: left;
+		width: 30px;
+		text-align: center;
+		line-height: 30px;
+		font-size: 28px;
+		cursor: pointer;
+		color: #ccc;
+		height: 30px;
+		z-index: 9999999;
+
+		.dashicons {
+			font-size: 28px!important;
+			line-height: 30px!important;
+			transition: 0.2s all!important;
+			transition-delay: 0!important;
+		}
+
+	}
+
+	.prettypress_menu_trigger {
+		float: right;
+		width: 30px;
+		text-align: center;
+		line-height: 30px;
+		font-size: 28px;
+		cursor: pointer;
+		color: #ccc;
+		height: 30px;
+		z-index: 9999999;
+
+
+		.dashicons {
+			font-size: 28px!important;
+			line-height: 30px!important;
+			transition: 0.2s all!important;
+			transition-delay: 0!important;
+		}
+
+	}
+
+	.prettypress_menuTrigger_active {
+		color: #333;
+	}
+
+	.prettypress_exit:hover, .prettypress_menu_trigger:hover {
+		.dashicons {
+			color: #333;
+		}
+	}
+
+	.prettypress_leftcolumn {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 50%;
+		height: 100%;
+		background: #fff;
+		padding: 50px 20px 20px 20px;
+		box-sizing: border-box;
+		overflow: hidden;
+		transition: 0.4s all;
+
+		.prettypress_title {
+			display: block;
+			width: 100%;
+			box-sizing: border-box;
+			font-size: 20px;
+    	padding: 0.4em 0.5em;
+    	border-style: none;
+    	background: #eee;
+    	margin: 0;
+		}
+
+		.prettypress_markdown, .prettypress_html {
+			display: block;
+			width: 100%;
+			box-sizing: border-box;
+			font-size: 16px;
+    	padding: 0.4em 0.5em;
+    	margin: 0;
+    	border-style: none;
+    	box-shadow: none;
+    	background: #eee;
+    	resize: none;
+    	height: 500px;
+		}
+
+		.prettypress_content {
+			height: 90%;
+			position: relative;
+		}
+
+		.prettypress_tabs {
+			background: #eee;
+			padding: 0.5em;
+			margin-top: 1em;
+			box-sizing: border-box;
+			font-size: 11px;
+			text-transform: uppercase;
+
+			a {
+				color: #999;
+				text-decoration: none;
+				padding: 0 0.5em;
+			}
+
+			.active {
+				color: #000;
+			}
+
+		}
+
+		.prettypress_tab_visual {
+			padding-top: 20px;
+			box-sizing: border-box;
+		}
+
+	}
+	.prettypress_rightcolumn {
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 50%;
+		height: 100%;
+		box-sizing: border-box;
+		overflow: hidden;
+		transition: 0.4s all;
+	}
+
+	.prettypress_preview {
+		background: #fff;
+		width: 100%;
+		height: 100%;
+	}
+
+	input, textarea {
+		font-family: 'Open Sans', sans-serif;
+		font-size: 16px;
+		color: #333;
+	}
+
+}
+
+.prettypress_errorbox {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin-left: -500px;
+	width: 500px;
+	height: 250px;
+	background: #222;
+	color: #eee;
+	font-size: 16px;
+	z-index: 10000000;
+	margin: auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 1.5em;
+	opacity: 0;
+	border-radius: 5px;
+
+	h3 {
+		font-weight: 400;
+		color: #eee;
+		font-size: 24px!important;
+		text-align: center;
+	}
+
+	p {
+		font-size: 16px;
+	}
+
+	a.close {
+		width: 200px;
+		text-align: center;
+		margin: 0 auto;
+		display: block;
+		background: #222;
+		color: #eee;
+		border: 1px solid #eee;
+		padding: 0.5em 1.5em;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		border-radius: 5px;
+		cursor: pointer;
+		transition: 0.2s all;
+	}
+
+	a.close:hover {
+		background: #eee;
+		color: #222;
+	}
+
+}
+
+.prettypress_resize_handle {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 10px;
+	height: 100%;
+	cursor: ew-resize;
+	z-index: 1;
+}
+
+.prettypress_menu {
+	position: absolute;
+	background: #222;
+	color: #aaa;
+	font-size: 16px;
+	font-weight: 400;
+	white-space: nowrap;
+	text-align: left;
+	z-index: -1;
+	margin-top: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.2s;
+
+	a {
+		color: #eee;
+		text-decoration: none;
+		padding: 0.25em 1em;
+		display: block;
+	}
+	a:hover {
+		background: #111;
+		color: #2ea2cc;
+	}
+	a.heading:hover {
+		background: #222;
+		color: #eee;
+		cursor: default;
+	}
+	a.sub-item {
+		padding: 0em 1em 0em 1.75em;
+		font-size: 14px;
+	}
+	a.hidden {
+		display: none!important;
+	}
+}
+
+.prettypress_menu_active {
+	margin-top: 12px;
+	z-index: 999999999999;
+	opacity: 1;
+	visibility: visible;
+}
+
+.prettypress_menu:before {
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #222;
+	margin-top: -10px;
+	margin-left: 10px;
+	display: block;
+	content: " ";
+}
+
+.prettypress_tab {
+	display: none;
+}
+
+.prettypress_tab_active {
+	display: block;
+}
+
+.prettypress_resize_leftcolumn {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 100%;
+	background: #aaa;
+	opacity: 0.75;
+	padding: 50px 20px 20px 20px;
+	box-sizing: border-box;
+	overflow: hidden;
+	display: none;
+}
+
+.prettypress_resize_rightcolumn {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 50%;
+	height: 100%;
+	background: #777;
+	opacity: 0.75;
+	padding: 50px 20px 20px 20px;
+	box-sizing: border-box;
+	overflow: hidden;
+	display: none;
+}
+
+.prettypress_disabled_editor {
+	display: none;
+}
+
+
+//Hacky CSS for TinyMCE support.
+.media-modal {
+	z-index: 9999999999999999999999999999999999999999!important;
+}
+
+.mce-menu, .mce-popover, .mce-floatpanel {
+	z-index: 9999999999999999999999999999999999999999!important;
+}
+
+#prettypress_tinymce_ifr {
+	max-height: 85%;
+}
+
+#wp-link-wrap {
+	z-index: 9999999999999999999999999999999999999999!important;
+}
+
+.mce-ico mce-i-fullscreen {
+	display: none!important;
+}
+
+//Hacky support for various plugins, as requested via support.
+.media-modal, #TB_window, #TB_overlay {
+	z-index: 9999999999999999999999999999999999999999!important;
+}
