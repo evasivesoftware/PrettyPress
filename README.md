@@ -10,7 +10,8 @@ It rids distractions and bloated features, to give you exactly what you need to 
 * A real-time live preview of your post
 * A distraction free environment
 
-[PrettyPress Pro][http://pro.evasivesoftware.com] users also have shortcodes executed and previewed in real-time.
+PrettyPress Pro users also have shortcodes executed and previewed in real-time.
+http://pro.evasivesoftware.com
 
 ###Live preview window, as you type
 PrettyPress provides you with a live "front-end" preview of the post you are writing. This means you can write your post remaining confident it will look as intended by the end.
@@ -24,4 +25,5 @@ PrettyPress ships out of the box as a markdown editor. All markdown is converted
 Check that your theme is correctly using the_title_attribute for title="" attributes. If your theme is incorrectly using the_title(), PrettyPress hooks will automatically be applied here, thus breaking your theme.
 
 ###My shortcodes don't execute in the preview window
-Live shortcode previews are only available to [PrettyPress Pro][http://pro.evasivesoftware.com] users.
+Live shortcode previews are only available to PrettyPress Pro users.
+http://pro.evasivesoftware.com
