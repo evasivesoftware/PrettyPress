@@ -45,8 +45,11 @@ if ( $prettypress_config['enabled'] == "enabled" ) {
 	add_action( 'edit_page_form', 'prettypress_edit_hook' );
 
 	//The live page hooks
-	add_filter( 'the_content', 'prettypress_thecontent' );
-	add_filter( 'the_title', 'prettypress_thetitle' );
+	add_filter( 'the_content', 'prettypress_thecontent', 10, 1 );
+	add_filter( 'the_title', 'prettypress_thetitle', 10, 1 );
+
+	//Remove dashboard hooks.
+	add_action('wp_dashboard_setup', 'prettypress_unhook_actions');
 
 	//Autosave for posts that don't have a post ID yet.
 	add_filter('redirect_post_location', 'prettypress_autosave');
@@ -193,17 +196,27 @@ function prettypress_thetitle( $title ) {
 	if ( is_user_logged_in() && $id ) {
 		if ( is_admin() ) {
 			global $pagenow;
+
 			if ( $pagenow != 'edit.php' && $pagenow != "upload.php" && $pagenow != "admin-ajax.php" ) {
 				return '<span data-rel="title">' . $title . '</span>';
-			} else {
-				return $title;
 			}
+
+			return $title;
+			
 		} else {
 			return '<span data-rel="title">' . $title . '</span>';
 		}
 	} else {
 		return $title;
 	}
+
+}
+
+function prettypress_unhook_actions() {
+
+	//Unhooks PrettyPress "page" actions.
+	remove_action( 'the_content', 'prettypress_thecontent', 10, 1 );
+	remove_action( 'the_title', 'prettypress_thetitle', 10, 1 );
 
 }
 
