@@ -3,12 +3,12 @@ Contributors: evasivesoftware
 Donate link: http://pro.evasivesoftware.com/
 Tags: publishing, posting, live, preview, post interface, ghost, markdown
 Requires at least: 3.5
-Tested up to: 4.0
-Stable tag: 1.1.1
+Tested up to: 4.3
+Stable tag: 1.2.0
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 
-Version 1.1.x - Ferocious Feline
+Version 1.2 - Torturous Tortoise
 PrettyPress adds a sleek, modern publishing interface to Wordpress to help you write better articles in less time. Write in markdown, with a real-time live preview of how your post looks right next to your editor.
 
 The visual editor and html is also supported.

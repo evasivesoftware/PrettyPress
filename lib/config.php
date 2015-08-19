@@ -36,7 +36,6 @@ $prettypress_config = Array();
 $prettypress_config['data-identifiers']['title'] = "[data-rel=title]";
 $prettypress_config['data-identifiers']['content'] = "[data-rel=content]";
 $prettypress_config['enabled'] = "enabled";
-$prettypress_config['apikey'] = false;
 
 //Check for settings from the settings page to override these defaults.
 $tmp_enabled = get_option( 'prettypress_enabled', null );

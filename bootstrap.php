@@ -32,8 +32,8 @@ THE SOFTWARE.
 if ( ! defined('ABSPATH') ) { exit; }
 
 define( "PLUGINNAME",									"PrettyPress" );
-define( "PLUGINVERSION", 							"1.1.1" );
-define( "PLUGINCODENAME", 						"Ferocious Feline" );
+define( "PLUGINVERSION", 							"1.2.0" );
+define( "PLUGINCODENAME", 						"Torturous Tortoise" );
 define( "PLUGINPATH",									dirname(__FILE__) );
 define( "PRETTYPRESS_BASE_URL",				plugins_url( "", __FILE__ ) );
 define( "PRETTYPRESSPRO_SALES_URL",		"http://pro.evasivesoftware.com" );
@@ -44,4 +44,5 @@ require_once 'lib/config.php';
 require_once 'lib/settings.php';
 require_once 'lib/hooks.php';
 
-?>
+//Pro only.
+require_once 'lib/ajax.php';
